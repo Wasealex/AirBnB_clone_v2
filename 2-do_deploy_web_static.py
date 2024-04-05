@@ -2,7 +2,6 @@
 """script that deploys to webserver
 """
 from fabric.api import *
-from datetime import datetime
 import os
 
 env.hosts = ['54.237.13.137', '54.87.235.212']
@@ -29,9 +28,9 @@ def do_deploy(archive_path):
         put(archive_path, '/tmp/')
 
         archivename = archive_path.split('/')[-1]
-        d_name = archivename.split('.')[0]
-        d_path = '/data/web_static/releases/'
-        archivefolder = f'{d_path}{d_name}'
+        base_name = archivename.split('.')[0]
+        full_path = '/data/web_static/releases/'
+        archivefolder = f'{full_path}{base_name}'
         run('mkdir -p {}'.format(archivefolder))
         run('tar -xzf /tmp/{} -C {}'.format(archivename, archivefolder))
         run('rm /tmp/{}'.format(archivename))
