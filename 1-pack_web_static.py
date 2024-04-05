@@ -21,6 +21,7 @@ def do_pack():
     result = local(f'sudo tar -cvzf versions/{full_name} web_static')
     file_size = os.path.getsize('versions/' + full_name)
     print(f"web_static packed: versions/{full_name} -> {file_size}Bytes")
+    archive_path = f'versions/{full_name}'
     if result.failed:
         return None
-    return f'versions/{full_name}'
+    return archive_path
