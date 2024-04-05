@@ -25,12 +25,12 @@ def do_deploy(archive_path):
         return False
 
     try:
-        #archive_path='versions/web_statics_{datetime.now}.tgz'
+        # archive_path='versions/web_statics_{datetime.now}.tgz'
         put(archive_path, '/tmp/')
 
         archivename = archive_path.split('/')[-1]
         d_name = archivename.split('.')[0]
-        d_path= '/data/web_static/releases/'
+        d_path = '/data/web_static/releases/'
         archivefolder = f'{d_path}{d_name}'
         run('mkdir -p {}'.format(archivefolder))
         run('tar -xzf /tmp/{} -C {}'.format(archivename, archivefolder))
