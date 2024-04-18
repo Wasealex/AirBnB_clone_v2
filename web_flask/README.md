@@ -1,0 +1,1 @@
+making webpage dynamic using flusk as web frameworks that helo with view control and model
