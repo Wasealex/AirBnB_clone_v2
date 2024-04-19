@@ -40,5 +40,15 @@ def number_template(n):
     return render_template('5-number.html', number=n)
 
 
+@app.route('/number_odd_or_even/<int:n>')
+def number_odd_or_even(n):
+    my_status = ''
+    if n % 2 == 0:
+        my_status += 'is even'
+    else:
+        my_status += 'is odd'
+    return render_template('6-number_odd_or_even.html', number=n, check=my_status)
+
+
 if __name__ == "__main__":
     Flask.run(app)
