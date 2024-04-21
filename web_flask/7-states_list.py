@@ -7,9 +7,8 @@ Declare a method to handle @app.teardown_appcontext
 Call in this method storage.close()
 """
 from flask import Flask, render_template
+from models import *
 from models import storage
-from models.state import State
-from sqlalchemy.orm import scoped_session, sessionmaker
 
 app = Flask(__name__)
 
@@ -21,7 +20,7 @@ def teardown(exception):
 
 @app.route("/states_list")
 def states_list():
-    states = sorted(storage.all(State).values(), key=lambda s: s.name)
+    states = sorted(list(storage.all("State").values()), key=lambda s: s.name)
     return render_template("7-states_list.html", states=states)
 
 
