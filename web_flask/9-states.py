@@ -18,6 +18,7 @@ def states():
     states = storage.all("State")
     return render_template("9-states.html", states=states)
 
+
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     for state in storage.all("State").values():
@@ -29,6 +30,7 @@ def states_id(id):
 @app.teardown_appcontext
 def teardown(exception):
     storage.close()
+
 
 if __name__ == "__main__":
     Flask.run(app)
